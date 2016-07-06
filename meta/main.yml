@@ -4,9 +4,6 @@ galaxy_info:
   description: Deployment role for Laravel5 apps.
   license: MIT
   min_ansible_version: 1.2
-  categories:
-    - development
-    - web
   galaxy_tags:
     - web
     - development
