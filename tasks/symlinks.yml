@@ -1,10 +1,13 @@
-# Deployment role for Laravel4 apps.
+# Deployment role for Laravel5 apps.
 # Brought to you by Blacklight - http://www.blacklight.co.za/.
 # Developer: Zander Janse van Rensburg <zjvren@geevcookie.com>
 # License: MIT
 #
 # This file handles the creation of symlinks to the new release.
 ---
+- name: Create .env symlink
+  file: state=link src={{ laravel_root_dir }}/shared/.env path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/.env force=true
+  
 - name: Check if the sessions directory exists
   stat: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage/framework/sessions
   register: sessions_path
