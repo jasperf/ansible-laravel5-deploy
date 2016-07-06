@@ -7,4 +7,6 @@ galaxy_info:
   categories:
     - development
     - web
+  galaxy_tags:
+    - laravel
 dependencies: []
