@@ -10,8 +10,7 @@
   register: local_path
   ignore_errors: true
 
-- name: Archive upload.
-  block:
+- block:
     - name: Archive deploy upload.
       copy:
         src: "{{ laravel_local_archive_path }}"
