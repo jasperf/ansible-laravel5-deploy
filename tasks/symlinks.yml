@@ -7,14 +7,14 @@
 ---
 - name: Create .env symlink
   file: state=link src={{ laravel_root_dir }}/shared/.env path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/.env force=true
-  
+
 - name: Check if the sessions directory exists
   stat: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage/framework/sessions
   register: sessions_path
   ignore_errors: true
 
 - name: Delete session directory
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage/framework/sessions
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage/framework/sessions state=absent
   when: sessions_path|success and sessions_path.stat.exists
   register: session_directory_deleted
   ignore_errors: true
@@ -32,7 +32,7 @@
   ignore_errors: true
 
 - name: Delete logs directory
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage/logs
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage/logs state=absent
   when: logs_path|success and logs_path.stat.exists
   register: logs_directory_deleted
   ignore_errors: true
@@ -50,7 +50,7 @@
   ignore_errors: true
 
 - name: Delete uploads directory
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}/public/uploads
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/public/uploads state=absent
   when: uploads_path|success and uploads_path.stat.exists
   register: uploads_path_deleted
   ignore_errors: true

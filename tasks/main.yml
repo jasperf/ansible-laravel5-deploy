@@ -10,11 +10,11 @@
   include: deploy.yml
 
 - name: Cleanup on deployment failure.
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
   when: deployed|failed
 
 - name: Check if processing needs to continue.
-  fail: 
+  fail:
     msg: Code could not be deployed!
   when: deployed|failed
 
@@ -34,11 +34,11 @@
   include: symlinks.yml
 
 - name: Cleanup on symlinks failure.
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
   when: symlinks_created|failed
 
 - name: Check if processing needs to continue.
-  fail: 
+  fail:
     msg: Symlinks could not be created!
   when: symlinks_created|failed
 
@@ -46,11 +46,11 @@
   include: composer.yml
 
 - name: Cleanup on Composer failure.
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
   when: composer_install_complete|failed
 
 - name: Check if processing needs to continue.
-  fail: 
+  fail:
     msg: Composer install failed!
   when: composer_install_complete|failed
 
@@ -60,11 +60,11 @@
   ignore_errors: true
 
 - name: Cleanup on final steps failure.
-  shell: rm -fr {{ laravel_root_dir }}/releases/{{ release_version.stdout }}
+  file: paht={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
   when: current_symlink|failed
 
 - name: Check if processing needs to continue.
-  fail: 
+  fail:
     msg: Could not finish off final steps!
   when: current_symlink|failed
 
