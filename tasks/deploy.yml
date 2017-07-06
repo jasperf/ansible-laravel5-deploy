@@ -17,13 +17,19 @@
         src: "{{ laravel_local_archive_path }}"
         dest: "{{ laravel_root_dir }}/releases/{{ laravel_local_archive_path | basename }}"
       when: laravel_strategy == "archive" and local_path|success
+      register: archive_uploaded
 
     - name: Archive deploy extract.
       unarchive:
         src: "{{ laravel_root_dir }}/releases/{{ laravel_local_archive_path | basename }}"
         dest: "{{ laravel_root_dir }}/releases/{{ release_version.stdout }}"
         remote_src: True
-      when: laravel_strategy == "archive" and local_path|success
+      when: laravel_strategy == "archive" and local_path|success and archive_uploaded|success
+      register: archive_extracted
+
+    - name: Remove archive.
+      file: path={{ laravel_root_dir }}/releases/{{ laravel_local_archive_path | basename }} state=absent
+      when: laravel_strategy == "archive" and local_path|success and archive_extracted|success
       register: deployed
 
 
