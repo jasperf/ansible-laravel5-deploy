@@ -15,11 +15,20 @@
 - name: Create the shared storage/logs directory.
   file: state=directory path={{ laravel_root_dir }}/shared/storage/logs
 
+- name: Create the shared storage/framework directory.
+  file: state=directory path={{ laravel_root_dir }}/shared/storage/framework
+
+- name: Create the shared storage/framework/cache directory.
+  file: state=directory path={{ laravel_root_dir }}/shared/storage/framework/cache
+
+- name: Create the shared storage/framework/views directory.
+  file: state=directory path={{ laravel_root_dir }}/shared/storage/framework/views
+
 - name: Create the shared storage/framework/sessions directory.
   file: state=directory path={{ laravel_root_dir }}/shared/storage/framework/sessions
 
-- name: Create the shared public/uploads directory.
-  file: state=directory path={{ laravel_root_dir }}/shared/public/uploads
+- name: Create the shared storage/app/public directory.
+  file: state=directory path={{ laravel_root_dir }}/shared/storage/app/public
 
 - name: Create the release directory.
   file: state=directory path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}
