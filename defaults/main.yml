@@ -9,3 +9,4 @@ laravel_composer_options: --no-dev --no-interaction --optimize-autoloader
 laravel_releases: 5
 laravel_local_root: /
 laravel_local_archive_path: false
+laravel_local_env_path: false
