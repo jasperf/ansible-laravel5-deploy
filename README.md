@@ -59,7 +59,7 @@ The branch that you would like to deploy.
 
 ### laravel_strategy (Defaults: git)
 
-The deployment strategy to use. Available options: git, svb, mercurial, rsync
+The deployment strategy to use. Available options: git, svb, mercurial, rsync, archive
 
 ### laravel_local_root (Defaults: /)
 

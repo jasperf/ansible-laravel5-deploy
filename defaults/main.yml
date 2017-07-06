@@ -8,3 +8,4 @@ laravel_php_path: /usr/bin/php
 laravel_composer_options: --no-dev --no-interaction --optimize-autoloader
 laravel_releases: 5
 laravel_local_root: /
+laravel_local_archive_path: false

@@ -10,6 +10,23 @@
   register: local_path
   ignore_errors: true
 
+- name: Archive upload.
+  block:
+    - name: Archive deploy upload.
+      copy:
+        src: "{{ laravel_local_archive_path }}"
+        dest: "{{ laravel_root_dir }}/releases/{{ laravel_local_archive_path | basename }}"
+      when: laravel_strategy == "archive" and local_path|success
+
+    - name: Archive deploy extract.
+      unarchive:
+        src: "{{ laravel_root_dir }}/releases/{{ laravel_local_archive_path | basename }}"
+        dest: "{{ laravel_root_dir }}/releases/{{ release_version.stdout }}"
+        remote_src: True
+      when: laravel_strategy == "archive" and local_path|success
+      register: deployed
+
+
 - name: RSync deploy.
   synchronize: src={{ local_path.stdout }}{{ laravel_local_root }} dest={{ laravel_root_dir }}/releases/{{ release_version.stdout }} times=no recursive=yes perms=no owner=no group=no
   when: laravel_strategy == "rsync" and local_path|success
