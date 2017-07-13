@@ -60,7 +60,7 @@
   ignore_errors: true
 
 - name: Cleanup on final steps failure.
-  file: paht={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
+  file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
   when: current_symlink|failed
 
 - name: Check if processing needs to continue.
