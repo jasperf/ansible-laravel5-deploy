@@ -54,6 +54,9 @@
     msg: Composer install failed!
   when: composer_install_complete|failed
 
+- name: Run release artisan commands
+  include: release_artisan_commands.yml
+
 - name: Create symlink to newest release.
   file: state=link src={{ laravel_root_dir }}/releases/{{ release_version.stdout }} path={{ laravel_root_dir }}/current
   register: current_symlink
