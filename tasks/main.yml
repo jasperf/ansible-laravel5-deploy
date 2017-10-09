@@ -44,6 +44,7 @@
 
 - name: Run Composer.
   include: composer.yml
+  when: laravel_composer_install=='true'
 
 - name: Cleanup on Composer failure.
   file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
