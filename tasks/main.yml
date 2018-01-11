@@ -33,6 +33,9 @@
 - name: Create symlinks.
   include: symlinks.yml
 
+- name: Add crontab entries.
+  include: cron.yml
+
 - name: Cleanup on symlinks failure.
   file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
   when: symlinks_created|failed
