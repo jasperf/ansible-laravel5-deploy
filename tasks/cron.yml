@@ -2,4 +2,4 @@
   tags: cron
   cron:
       name: "Run Laravel scheduler"
-      job: "{{laravel_php_path}} {{ laravel_root_dir }}/artisan schedule:run >> /dev/null 2>&1"
+      job: "{{laravel_php_path}} {{ laravel_root_dir }}/current/artisan schedule:run >> /dev/null 2>&1"
