@@ -4,10 +4,10 @@
 # License: MIT
 ---
 - name: Create deployment directory.
-  include: directory.yml
+  include_tasks: directory.yml
 
 - name: Deploy the code.
-  include: deploy.yml
+  include_tasks: deploy.yml
 
 - name: Cleanup on deployment failure.
   file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
@@ -31,10 +31,10 @@
   when: laravel_env_uploaded|failed
 
 - name: Create symlinks.
-  include: symlinks.yml
+  include_tasks: symlinks.yml
 
 - name: Add crontab entries.
-  include: cron.yml
+  include_tasks: cron.yml
 
 - name: Cleanup on symlinks failure.
   file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
@@ -46,7 +46,7 @@
   when: symlinks_created|failed
 
 - name: Run Composer.
-  include: composer.yml
+  include_tasks: composer.yml
   when: laravel_composer_install=='true'
 
 - name: Cleanup on Composer failure.
@@ -59,7 +59,7 @@
   when: composer_install_complete|failed
 
 - name: Run release artisan commands
-  include: release_artisan_commands.yml
+  include_tasks: release_artisan_commands.yml
 
 - name: Create symlink to newest release.
   file: state=link src={{ laravel_root_dir }}/releases/{{ release_version.stdout }} path={{ laravel_root_dir }}/current
