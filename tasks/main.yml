@@ -51,12 +51,12 @@
 
 - name: Cleanup on Composer failure.
   file: path={{ laravel_root_dir }}/releases/{{ release_version.stdout }} state=absent
-  when: composer_install_complete|failed
+  when: laravel_composer_install=='true' and composer_install_complete|failed
 
 - name: Check if processing needs to continue.
   fail:
     msg: Composer install failed!
-  when: composer_install_complete|failed
+  when: laravel_composer_install=='true' and composer_install_complete|failed
 
 - name: Run release artisan commands
   include_tasks: release_artisan_commands.yml
