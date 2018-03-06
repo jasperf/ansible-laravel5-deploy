@@ -3,3 +3,4 @@
   cron:
       name: "Run Laravel scheduler"
       job: "{{laravel_php_path}} {{ laravel_root_dir }}/current/artisan schedule:run --quiet"
+  when: laravel_cron == true

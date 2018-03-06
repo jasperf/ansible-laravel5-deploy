@@ -29,7 +29,7 @@
 - name: Create symlinks.
   include_tasks: symlinks.yml
 
-- name: Add crontab entries.
+- name: Add crontab entry.
   include_tasks: cron.yml
 
 - name: Cleanup on symlinks failure.
