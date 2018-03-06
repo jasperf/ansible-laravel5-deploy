@@ -18,12 +18,8 @@
     msg: Code could not be deployed!
   when: deployed|failed
 
-- name: Upload .env.
-  copy:
-    src: "{{ laravel_local_env_path }}"
-    dest: "{{ laravel_root_dir }}/shared/.env"
-  when: laravel_local_env_path != false
-  register: laravel_env_uploaded
+- name: Upload env.
+  include_tasks: env.yml
 
 - name: Check if processing needs to continue.
   fail:
