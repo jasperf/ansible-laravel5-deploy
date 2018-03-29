@@ -15,12 +15,12 @@
 
 - name: Create storage symlink
   file: state=link src={{ laravel_root_dir }}/shared/storage path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/storage
-  when: storage_directory_deleted|success
+  when: storage_directory_deleted is success
   register: storage_symlink
   ignore_errors: true
 
 - name: Create public storage symlink
   file: state=link src={{ laravel_root_dir }}/shared/storage/app/public path={{ laravel_root_dir }}/releases/{{ release_version.stdout }}/public/storage
-  when: storage_symlink|success
+  when: storage_symlink is success
   register: symlinks_created
   ignore_errors: true
