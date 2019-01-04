@@ -1,4 +1,4 @@
-# Laravel5 Deploy
+# Laravel 5 Deploy
 
 Based on [Blacklight](http://www.blacklight.co.za) and [Cubesytem](https://github.com/cubesystems/ansible-laravel5-deploy)'s packages.
 
@@ -78,7 +78,7 @@ projects root directory.
     ansible_ssh_user: root
 
   roles:
-    - blacklight.laravel5-deploy
+    - jasperf.laravel5deploy
 ```
 
 ## License
