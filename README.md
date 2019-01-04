@@ -1,10 +1,13 @@
 # Laravel5 Deploy
 
-Based to you by [Blacklight](http://www.blacklight.co.za) and [Cubesytem](https://github.com/cubesystems/ansible-laravel5-deploy)
+Based on [Blacklight](http://www.blacklight.co.za) and [Cubesytem](https://github.com/cubesystems/ansible-laravel5-deploy)'s packages.
 
-Deployment role for Laravel 5 apps. Deployment can be done via Git, SVN, Mercurial, and Rsync. Tries to imitate a similar
-structure to what you would see with other deployment tools such as [Capistrano](http://capistranorb.com/). The final
-directory structure will look something like this:
+Deployment role for Laravel 5 apps. Deployment can be done via Git, SVN, Mercurial, and Rsync. It tries to imitate a similar
+structure to what you would see with other deployment tools such as [Capistrano](http://capistranorb.com/). 
+
+## Strcuture 
+
+The final directory structure will look something like this:
 
 ```
 project
@@ -23,69 +26,47 @@ project
 The role also has error checking in place. If any of the steps fail the role will delete the newly created release folder
 and stop execution. If the deploy was successful the role will remove old releases.
 
-Other Deployment Roles
-----------------------
+## Other Deployment Roles
+
 
 Symfony: [symfony-deploy](https://galaxy.ansible.com/list#/roles/2111)
 
 Laravel4: [laravel4-deploy](https://galaxy.ansible.com/list#/roles/2146)
 
-Requirements
-------------
+## Requirements
 
 The only requirement is Ansbile >= 1.2.
 
-Installation
-------------
+## Installation
 
 ```
 ansible-galaxy install jasperf.ansible_laravel5_deploy
 ```
 
-Role Variables
---------------
+## Role Variables
 
-### laravel_root_dir (Required)
+- laravel_root_dir (Required) - The root directory of the project.
 
-The root directory of the project.
+- laravel_repo (Required) - The URL to the repo containing the application code.
 
-### laravel_repo (Required)
+- aravel_branch (Defaults: master)- The branch that you would like to deploy.
 
-The URL to the repo containing the application code.
+- laravel_strategy (Defaults: git)- The deployment strategy to use. Available options: git, svb, mercurial, rsync, archive
 
-### laravel_branch (Defaults: master)
-
-The branch that you would like to deploy.
-
-### laravel_strategy (Defaults: git)
-
-The deployment strategy to use. Available options: git, svb, mercurial, rsync, archive
-
-### laravel_local_root (Defaults: /)
-
-This option is only used when deploying via Rsync. It defines the path to the local folder to upload to the server.
+- laravel_local_root (Defaults: /) This option is only used when deploying via Rsync. It defines the path to the local folder to upload to the server.
 
 *Important Note!* The path is relative to your playbook file.
 
-### laravel_composer_path (Defaults: false)
-
-The path to an existing composer installation. If set to false, the role will automatically download composer into the
+- laravel_composer_path (Defaults: false) -The path to an existing composer installation. If set to false, the role will automatically download composer into the
 projects root directory.
 
-### laravel_composer_options (Defaults: --no-dev --no-interaction --optimize-autoloader)
+- laravel_composer_options (Defaults: --no-dev --no-interaction --optimize-autoloader) -Flags to add to the composer install command.
 
-Flags to add to the composer install command.
+- laravel_php_path (Defaults: /usr/bin/php) -The path to PHP. This is only used when the role has to download composer.
 
-### laravel_php_path (Defaults: /usr/bin/php)
+- laravel_releases (Defaults: 5) The amount of releases to keep in the releases directory.
 
-The path to PHP. This is only used when the role has to download composer.
-
-### laravel_releases (Defaults: 5)
-
-The amount of releases to keep in the releases directory.
-
-Example Playbook
-----------------
+## Example Playbook
 
 ```yml
 ---
@@ -100,7 +81,7 @@ Example Playbook
     - blacklight.laravel5-deploy
 ```
 
-License
--------
+## License
+
 
 MIT
