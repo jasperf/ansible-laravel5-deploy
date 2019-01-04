@@ -26,12 +26,6 @@ project
 The role also has error checking in place. If any of the steps fail the role will delete the newly created release folder
 and stop execution. If the deploy was successful the role will remove old releases.
 
-## Other Deployment Roles
-
-
-Symfony: [symfony-deploy](https://galaxy.ansible.com/list#/roles/2111)
-
-Laravel4: [laravel4-deploy](https://galaxy.ansible.com/list#/roles/2146)
 
 ## Requirements
 
@@ -40,7 +34,13 @@ The only requirement is Ansbile >= 2.5.
 ## Installation
 
 ```
-ansible-galaxy install jasperf.ansible_laravel5_deploy
+ansible-galaxy install jasperf.laravel5deploy
+```
+
+or 
+
+```
+ansible-galaxy install jasperf.laravel5deploy --roles-path ~/path/to/project/
 ```
 
 ## Role Variables
