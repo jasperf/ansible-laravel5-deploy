@@ -3,7 +3,7 @@ galaxy_info:
   author: Zander Janse van Rensburg
   description: Deployment role for Laravel5 apps.
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.5
   galaxy_tags:
     - web
     - development
@@ -17,4 +17,7 @@ galaxy_info:
       versions:
       - wheezy
       - jessie
+    - name: Ubuntu
+      versions:
+      - Bionic
 dependencies: []
