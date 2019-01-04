@@ -5,7 +5,7 @@ Based on [Blacklight](http://www.blacklight.co.za) and [Cubesytem](https://githu
 Deployment role for Laravel 5 apps. Deployment can be done via Git, SVN, Mercurial, and Rsync. It tries to imitate a similar
 structure to what you would see with other deployment tools such as [Capistrano](http://capistranorb.com/). 
 
-## Strcuture 
+## Structure 
 
 The final directory structure will look something like this:
 
@@ -45,26 +45,26 @@ ansible-galaxy install jasperf.ansible_laravel5_deploy
 
 ## Role Variables
 
-- laravel_root_dir (Required) - The root directory of the project.
+- **laravel_root_dir** (Required) - The root directory of the project.
 
-- laravel_repo (Required) - The URL to the repo containing the application code.
+- **laravel_repo** (Required) - The URL to the repo containing the application code.
 
-- aravel_branch (Defaults: master)- The branch that you would like to deploy.
+- **laravel_branch** (Defaults: master)- The branch that you would like to deploy.
 
-- laravel_strategy (Defaults: git)- The deployment strategy to use. Available options: git, svb, mercurial, rsync, archive
+- **laravel_strategy** (Defaults: git)- The deployment strategy to use. Available options: git, svb, mercurial, rsync, archive
 
-- laravel_local_root (Defaults: /) This option is only used when deploying via Rsync. It defines the path to the local folder to upload to the server.
+- **laravel_local_root** (Defaults: /) This option is only used when deploying via Rsync. It defines the path to the local folder to upload to the server.
 
-*Important Note!* The path is relative to your playbook file.
+**NB** The path is relative to your playbook file.
 
-- laravel_composer_path (Defaults: false) -The path to an existing composer installation. If set to false, the role will automatically download composer into the
+- **laravel_composer_path** (Defaults: false) -The path to an existing composer installation. If set to false, the role will automatically download composer into the
 projects root directory.
 
-- laravel_composer_options (Defaults: --no-dev --no-interaction --optimize-autoloader) -Flags to add to the composer install command.
+- **laravel_composer_options** (Defaults: --no-dev --no-interaction --optimize-autoloader) -Flags to add to the composer install command.
 
-- laravel_php_path (Defaults: /usr/bin/php) -The path to PHP. This is only used when the role has to download composer.
+- **laravel_php_path** (Defaults: /usr/bin/php) -The path to PHP. This is only used when the role has to download composer.
 
-- laravel_releases (Defaults: 5) The amount of releases to keep in the releases directory.
+- **laravel_releases** (Defaults: 5) The amount of releases to keep in the releases directory.
 
 ## Example Playbook
 
