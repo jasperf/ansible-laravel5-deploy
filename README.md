@@ -1,6 +1,6 @@
 # Laravel5 Deploy
 
-Brought to you by [Blacklight](http://www.blacklight.co.za).
+Based to you by [Blacklight](http://www.blacklight.co.za) and [Cubesytem](https://github.com/cubesystems/ansible-laravel5-deploy)
 
 Deployment role for Laravel 5 apps. Deployment can be done via Git, SVN, Mercurial, and Rsync. Tries to imitate a similar
 structure to what you would see with other deployment tools such as [Capistrano](http://capistranorb.com/). The final
@@ -39,7 +39,7 @@ Installation
 ------------
 
 ```
-ansible-galaxy install blacklight.laravel4-deploy
+ansible-galaxy install jasperf.ansible_laravel5_deploy
 ```
 
 Role Variables
