@@ -35,7 +35,7 @@ Laravel4: [laravel4-deploy](https://galaxy.ansible.com/list#/roles/2146)
 
 ## Requirements
 
-The only requirement is Ansbile >= 1.2.
+The only requirement is Ansbile >= 2.5.
 
 ## Installation
 
